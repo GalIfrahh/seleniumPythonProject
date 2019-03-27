@@ -1,8 +1,6 @@
 import logging
-
 from Infrastracture.GenericPageObjects import *
 from selenium.common.exceptions import NoSuchElementException
-
 from Services.ErrorService import ErrorsHandler
 
 
