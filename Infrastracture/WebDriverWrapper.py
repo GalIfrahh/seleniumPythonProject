@@ -6,7 +6,6 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time
-# from Infrastructure.Locators import LocatorsTypes
 from selenium.common.exceptions import (NoSuchElementException, TimeoutException)
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.by import By
@@ -32,61 +31,68 @@ class DriverWrapper:
 
 
     def findElementBy(self, value, LocatorType):
+        
         element_assigned = False
 
         try:
             if LocatorType == By.XPATH:
 
-                element = WebDriverWait(self.driver, 20).until(
+                element = WebDriverWait(self.driver, 10).until(
                     ec.visibility_of_element_located((By.XPATH, value)))
 
             elif LocatorType == By.ID:
 
-                element = WebDriverWait(self.driver, 20).until(
+                element = WebDriverWait(self.driver, 10).until(
                     ec.visibility_of_element_located((By.ID, value)))
 
             if element is not None:
                 element_assigned = True
 
+                
         except TimeoutException as E:
             logging.error(ErrorsHandler.TIMEOUT_ERROR)
-
-        except TimeoutError as E:
-            logging.error(ErrorsHandler.TIMEOUT_ERROR)
+            
 
         except NoSuchElementException as E:
             logging.error(ErrorsHandler.NO_SUCH_ELEMENT)
 
-        except UnboundLocalError as E:
-            E.with_traceback(E.__context__)
-
+            
         if element_assigned is True:
+            
             return element
+        
         else:
             print(ErrorsHandler.ELEMENT_NOT_ASSIGNED_YET)
 
 
+            
     def hoverAndClick(self, firstElementLocator, secondElementLocator):
+        
         action = ActionChains(self.driver)
 
         action.move_to_element(self.driver.find_element_by_xpath(firstElementLocator)).move_to_element(
+            
             (self.driver.find_element_by_xpath(secondElementLocator))).double_click((
+            
             self.driver.find_element_by_xpath(secondElementLocator))).perform()
 
 
     def selectFromDropDown(self, drop_down_locator, option_text):
-        time.sleep(1)
+        
         selector = Select(self.driver.find_element_by_id(drop_down_locator))
+  
         selector.select_by_visible_text(option_text)
 
 
     def getDropDownOptionsList(self, drop_down_locator):
+        
         selector = Select(self.driver.find_element_by_id(drop_down_locator))
 
         return selector.options
 
 
     def waitForElemToBeClickable(self, elementLocator):
+        
         try:
             WebDriverWait(self.driver, 10).until(
                 ec.element_to_be_clickable((By.XPATH, elementLocator))).click()
@@ -96,6 +102,7 @@ class DriverWrapper:
 
 
     def waitForInvisibilityOfElem(self, elementLocator):
+        
         isVisible = WebDriverWait(self.driver, 5).until(
             ec.invisibility_of_element_located((By.XPATH, elementLocator)))
 
@@ -122,6 +129,7 @@ class DriverWrapper:
 
 
     def getCurrentUrl(self):
+        
         current_url = self.driver.current_url
 
         return current_url
@@ -130,28 +138,18 @@ class DriverWrapper:
     def executeScript(self, script_to_execute):
         self.driver.execute_script(script_to_execute)
 
+        
     def refreshPage(self):
         self.driver.refresh()
 
 
-    def saveScreenShot(self, i, test_name):
-        time.sleep(1)
+    def saveScreenShot(self, test_name):
+        
+        filename = test_name + '_screenShot.png'
 
-        if i == 0:
+        self.driver.save_screenshot(
 
-            filename = test_name + '_screenShot.png'
+        '/ScreenShots' + filename)
 
-            self.driver.save_screenshot(
-
-                'Wallet/ScreenShots' + filename)
-
-        elif i != 0:
-
-            filename = test_name + '_screenShot' + str(i) + '.png'
-
-            self.remoteWebDriver.save_screenshot(
-
-                'Wallet/ScreenShots' + filename)
-
-        return test_name
+         return test_name
 
