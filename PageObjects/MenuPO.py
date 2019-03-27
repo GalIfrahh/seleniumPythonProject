@@ -5,14 +5,13 @@ class Menu:
 
 
     def chooseFirstCategory(self):
-        time.sleep(1)
         GenericPO.driver.findElementBy(config['MENU']['LOCATORS']['FIRST_CATEGORY'], By.XPATH).click()
 
-    @staticmethod
+
     def chooseSecondCategory():
         GenericPO.driver.findElementBy(config['MENU']['LOCATORS']['SECOND_CATEGORY'], By.XPATH).click()
 
-    @staticmethod
+        
     def checkIfCategoryChosen():
         isChosen = False
 
@@ -21,9 +20,8 @@ class Menu:
 
         return isChosen
 
-    @staticmethod
+    
     def chooseRestrictedAgeCategory():
-        time.sleep(1)
         GenericPO.driver.findElementBy(config['MENU']['DATA']['AGE_RESTRICTED_CATEGORY'], By.XPATH).click()
 
 
@@ -37,7 +35,6 @@ class Menu:
 
 
     def chooseSecondItem(self):
-        time.sleep(1)
         GenericPO.driver.findElementBy(self, config['MENU']['LOCATORS']['SECOND_ITEM'],
                                           By.XPATH).click()
 
@@ -92,7 +89,6 @@ class Menu:
         return header_text
 
     def closeModifiersWindow(self):
-        time.sleep(1)
         GenericPO.driver.findElementBy(self, config['MENU']['LOCATORS']['CLOSE_MODIFIER_X_BUTTON'],
                                           By.XPATH).click()
 
@@ -108,8 +104,6 @@ class Menu:
 
 
     def getModifiersBySection(self):
-        time.sleep(1)
-
         modifiers_list = self.driver.find_elements(by=By.XPATH, value=config['MENU']['LOCATORS']['SECOND_CATEGORY_MODIFIERS'])
 
         return modifiers_list
@@ -127,7 +121,6 @@ class Menu:
     def moveToCart(self, platform):
 
         if platform == 'mobile':
-            time.sleep(1)
             GenericPO.driver.findElementBy(self, "//div[@id='toast-container']",
                                         By.XPATH).click()
             time.sleep(1)
@@ -137,25 +130,10 @@ class Menu:
 
 
     def clickOnProceedToCheckout(self):
-
-        #if BasicTestClass.platform == "desktop":
-
-                GenericPO.driver.findElementBy(self, config['MENU']['LOCATORS']['PROCEED_TO_CHECKOUT_BUTTON'],
+            GenericPO.driver.findElementBy(self, config['MENU']['LOCATORS']['PROCEED_TO_CHECKOUT_BUTTON'],
                                               By.XPATH).click()
 
-        #elif BasicTestClass.platform == "mobile":
-
-                # GenericPO.webDriver.findElementBy("//div[@id='toast-container']",
-                #                                   LocatorsType=LocatorsTypes.XPATH).click()
-                # time.sleep(1)
-                #
-                # GenericPO.webDriver.findElementBy(params['MENU']['LOCATORS']['MOBILE_CART_ICON'],
-                #                                   LocatorsType=LocatorsTypes.XPATH).click()
-
-                # GenericPO.webDriver.findElementBy(params['MENU']['LOCATORS']['PROCEED_TO_CHECKOUT_BUTTON'],
-                #                               LocatorsType=LocatorsTypes.XPATH).click()
-
-
+        
     def getPopup(self):
         screen_popup = GenericPO.webDriver.waitForVisibilityOfElem(
             self, config['MENU']['LOCATORS']['SCREEN_POPUP'])
@@ -183,6 +161,7 @@ class Menu:
 
         return up_sale_popup_text
 
+    
     def clickOnPopupOkBtn(self):
         GenericPO.driver.findElementBy(self,
              config['MENU']['LOCATORS']['SCREEN_POPUP_OK'], By.XPATH).click()
