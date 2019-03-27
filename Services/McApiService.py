@@ -8,15 +8,15 @@ from App.PageObjects import *
 
 USERS_ENDPOINT = "https://the-test.mycheckapp.com/users"
 AUDIENCE = "TEST"
-GET_VERIFY_CODE_BY_PSW = "KRJfHeXpKIXksryv51wkYjYwOxEuWAv5/QGy8F10UL0="
+GET_VERIFY_CODE_BY_PSW = "KRJfHeXpKxxxxxxxxxxxxxxxxxxxxxxxx="
 
 
 def sendSMS():
 
    request = {
 
-       "phone": "+972542567405",
-       "publishableKey": "pk_xb0tQerFtExKhYLbUMz8bkhhlpkuL"
+       "phone": "+9725678879789",
+       "publishableKey": "pk_xb0tQerFtxxxxxxxxxxxxxxxxx"
    }
 
    response = requests.post(USERS_ENDPOINT + '/api/v1/user/metadata/guest', data=request)
