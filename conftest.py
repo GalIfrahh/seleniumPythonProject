@@ -11,18 +11,12 @@ web_driver = None
 @pytest.fixture(scope="function")
 def driver_init(request, env):
 
-    # from selenium import webdriver
     desired_caps = {'platform': 'Linux', 'browserName': 'chrome'}
 
     global web_driver
 
-    if web_driver is None:
-
-        web_driver = webdriver.Remote("http://localhost:4444/wd/hub", desired_caps)
-
-    elif web_driver is not None:
-
-        web_driver = webdriver.Remote("http://localhost:4444/wd/hub", desired_caps)
+    web_driver = webdriver.Remote("http://localhost:4444/wd/hub", desired_caps)
+    Wrapper.driver = web_driver
 
     web_driver.maximize_window()
 
