@@ -6,7 +6,6 @@ from Services.utils import ProjectUtils
 class EnterPhoneScreen:
 
 
-
     def getPhoneFieldElement(self):
         element = GenericPO.driver.findElementBy(self, config['ENTER_PHONE_PAGE']['LOCATORS']['PHONE_FIELD'], By.XPATH)
         return element
