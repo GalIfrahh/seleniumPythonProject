@@ -4,7 +4,6 @@ from Infrastracture.GenericPageObjects import *
 class FormPage:
 
 
-
     def enterFullName(self):
         GenericPO.driver.findElementBy(self, config['FORM_PAGE']['LOCATORS']['FORM_FULL_NAME_FIELD'],
                                     By.XPATH).send_keys(
@@ -33,4 +32,3 @@ class FormPage:
                                     By.XPATH).click()
 
         GenericPO.driver.waitForVisibilityOfElem(self, config['HOME_PAGE']['LOCATORS']['CONNECT_BTN_TEXT_AREA'])
-        # time.sleep(3)
