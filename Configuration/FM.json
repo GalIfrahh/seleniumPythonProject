@@ -209,7 +209,7 @@
                },
 
                          "SECOND_CARD_DETAILS": {
-                                                 "VALID_CC_NUMBER" : "4012-0000-3333-0026",
+                                                 "VALID_CC_NUMBER" : "xxxx-xxxx-xxxx-xxxx",
                                                  "EXP_DATE" : "12/19",
                                                  "CVC" : "012",
                                                  "POSTCODE" : "012"
