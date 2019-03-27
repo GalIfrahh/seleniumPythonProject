@@ -48,14 +48,10 @@ class EnterPhoneScreen:
 
         GenericPO.driver.switchToWindow(self, 0)
 
-        time.sleep(1)
-
         GenericPO.driver.findElementBy(self, config['ENTER_PHONE_PAGE']['LOCATORS']['ENTER_SMS_CODE'],
                                     By.XPATH).send_keys(code)
 
-        # code = ApiHelper.getCode(phoneToken)
-        # code = raw_input()
-
+       
 
     def enterWrongSmsCode(self):
 
@@ -67,14 +63,15 @@ class EnterPhoneScreen:
             send_keys(rand_sms_code)
 
 
+        
     def submitSmsCode(self):
         GenericPO.driver.findElementBy(self, config['ENTER_PHONE_PAGE']['LOCATORS']['SUBMIT_SMS_CODE'],
                                 By.XPATH).click()
 
         GenericPO.driver.waitForVisibilityOfElem(self, config['HOME_PAGE']['LOCATORS']['CONNECT_BTN_TEXT_AREA'])
 
-        #time.sleep(3)
 
+        
     def clickOnResendCode(self):
 
         GenericPO.driver.switchToWindow(self, 0)
