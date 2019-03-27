@@ -6,11 +6,8 @@ from PageObjects.AccountPO import Account
 class Wallet:
 
 
-
     def clickOnAddNewCard(self):
-        if len(Wallet.getUserCardsList()) >= 1 and Wallet.getUserCardsList()[0].text == config['WALLET']['TEXTS']['ADD_NEW_CARD_TEXT']:
-
-                    GenericPO.driver.findElementBy(self, config['WALLET']['LOCATORS']['ADD_NEW_CARD_BUTTON'],
+        GenericPO.driver.findElementBy(self, config['WALLET']['LOCATORS']['ADD_NEW_CARD_BUTTON'],
                                           By.XPATH).click()
 
         if config['WALLET']['LOCATORS']['ADD_NEW_CARD_BUTTON_HEADER'] != 0 and Wallet.getUserCardsList()[0].text \
@@ -19,15 +16,15 @@ class Wallet:
                     GenericPO.driver.findElementBy(self, config['WALLET']['LOCATORS']['ADD_NEW_CARD_BUTTON_HEADER'],
                                           By.XPATH).click()
 
-        # GenericPO.webDriver.switchToIframe(GenericPO.webDriver.remoteWebDriver.find_element_by_xpath
-        #                                  (params['WALLET']['LOCATORS']['CC_VALUES_IFRAME']))
-
+       
+    
     def getWalletHeader(self):
         wallet_header = GenericPO.driver.findElementBy(self, config['WALLET']['LOCATORS']['WALLET_HEADER'],
                                           By.XPATH).text
         return wallet_header
 
 
+    
     def enterCcNumber(self):
         try:
             GenericPO.driver.switchToIframe(self, GenericPO.webDriver.remoteWebDriver.find_element_by_xpath
@@ -40,10 +37,13 @@ class Wallet:
         except StaleElementReferenceException:
             print('stale element')
 
+            
+            
     def enterExpDate(self):
         GenericPO.driver.findElementBy(self, config['WALLET']['LOCATORS']['EXP_DATE_INPUT'],
                                     By.ID).send_keys(config['WALLET']['DATA']['FIRST_CARD_DETAILS']['EXP_DATE'])
 
+        
     def enterCvc(self):
         GenericPO.driver.findElementBy(self, config['WALLET']['LOCATORS']['CVC_INPUT'],
                                     By.ID).send_keys(config['WALLET']['DATA']['FIRST_CARD_DETAILS']['CVC'])
@@ -56,9 +56,8 @@ class Wallet:
     def clickOnCcApplyButton(self):
         GenericPO.driver.findElementBy(self, config['WALLET']['LOCATORS']['APPLY_BUTTON'],
                                     By.ID).click()
+       
         GenericPO.driver.remoteWebDriver.switch_to.default_content(self)
-
-        time.sleep(6)
 
 
     def getCcApplyButtonText(self):
@@ -71,8 +70,7 @@ class Wallet:
 
 
     def clickOnCcCancelButton(self):
-
-
+        
         try:
             GenericPO.driver.switchToIframe(self, GenericPO.driver.remoteWebDriver.find_element_by_xpath
                                                (config['WALLET']['LOCATORS']['CC_VALUES_IFRAME']))
@@ -86,9 +84,7 @@ class Wallet:
 
 
     def getCcCancelButtonText(self):
-        # GenericPO.webDriver.switchToIframe(GenericPO.webDriver.remoteWebDriver.find_element_by_xpath
-        #                                  (params['WALLET']['LOCATORS']['CC_VALUES_IFRAME']))
-
+        
         cancel_button_text = GenericPO.driver.findElementBy(self, config['WALLET']['LOCATORS']['CANCEL_BUTTON'],
                                     By.ID).text
         return cancel_button_text
@@ -117,6 +113,7 @@ class Wallet:
 
         return len(cards)
 
+    
     def clickOnDeleteCardButton(self):
         GenericPO.driver.findElementBy(self, config['WALLET']['LOCATORS']['DELETE_CARD_BUTTON'],
                                     By.XPATH).click()
@@ -139,10 +136,12 @@ class Wallet:
         return text
 
 
+    
     def clickOnDeleteNo(self):
         GenericPO.driver.findElementBy(self, config['WALLET']['LOCATORS']['DELETE_CARD_NO_BUTTON'],
                                     By.XPATH).click()
 
+        
     def getDeleteNoButtonText(self,):
         text = GenericPO.driver.findElementBy(self, config['WALLET']['LOCATORS']['DELETE_CARD_NO_BUTTON'],
                                     By.XPATH).text
