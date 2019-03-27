@@ -7,18 +7,18 @@ import numpy as py
 class ProjectUtils:
 
     @staticmethod
-    def loadJson():
+    def loadJson(client):
 
-        with open('ML' + '.json', 'r') as f:
+        with open(client  + '.json', 'r') as f:
             obj = json.load(f)
 
         return obj
 
 
     @staticmethod
-    def writeToJson(data):
+    def writeToJson(data, client):
 
-        with open('FM.json', 'w') as outfile:
+        with open(client + '.json', 'w') as outfile:
             json.dump(data, outfile)
 
 
