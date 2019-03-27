@@ -11,9 +11,9 @@ appName = ''
 
 def emailReporting(reporterType):
 
-        email_user = 'galifrah1357@gmail.com'
-        email_password = '1357975321'
-        email_send = 'gal.i@mycheck.co.il'
+        email_user = 'XXXXXXXXX@gmail.com'
+        email_password = 'XXXXXXX'
+        email_send = 'XXXXXXXXX@gmail.co.il'
 
         subject = 'Test'
 
@@ -27,8 +27,8 @@ def emailReporting(reporterType):
 
         dirPath = ""
 
-        ScreenShotsDirPath = 'C:\\Users\galif\PycharmProjects\WebAutomation\Reports\screenShots'
-        ReportsDirPath = 'C:\\Users\galif\PycharmProjects\WebAutomation\Reports\htmlReports'
+        ScreenShotsDirPath = '\Reports\screenShots'
+        ReportsDirPath = '\Reports\htmlReports'
 
 
         if reporterType == 'png':
